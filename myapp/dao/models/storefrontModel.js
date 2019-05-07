@@ -9,7 +9,7 @@ const storefrontSchema = new mongoose.Schema({
     location: String,//定位,经纬度
     person: String,//法人
     phone: String,//联系电话
-    banner: String,//头图
+    banner: Array,//头图
     feature: String,//特色
     vip: String,//VIP等级
     commission: String,//佣金比例
