@@ -29,9 +29,9 @@ module.exports.getStorefrontByPage = async (parm) => {
 
     let count = await storefrontModel.find();//总条数
     let totalPage = Math.ceil(count.length / currentPage); //总页数
-
+    
     return {
-        count,
+        count:count.length,
         totalPage,
         currentPage,
         eachPage,
