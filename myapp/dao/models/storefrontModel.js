@@ -4,12 +4,12 @@ const mongoose = require('mongoose');
 const storefrontSchema = new mongoose.Schema({
     name: String,    // 名称
     licensenumber: String, // 营业执照号码
-    license: String,  // 营业执照图片
+    license: Array,  // 营业执照图片
     site: String,//营业地址
     location: String,//定位,经纬度
     person: String,//法人
     phone: String,//联系电话
-    banner: String,//头图
+    banner: Array,//头图
     feature: String,//特色
     vip: String,//VIP等级
     commission: String,//佣金比例
