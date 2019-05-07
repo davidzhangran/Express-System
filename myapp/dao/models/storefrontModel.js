@@ -32,6 +32,7 @@ const storefrontSchema = new mongoose.Schema({
     },
 })
 
+
 mongoose.model('storefrontModel', storefrontSchema, "storefront");
 
 module.exports.storefrontModel = mongoose.model('storefrontModel');
