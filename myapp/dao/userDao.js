@@ -9,6 +9,7 @@ module.exports.addUser = async (parm) => {
 }
 //获取用户
 module.exports.getUserByPage = async ({ eachPage, currentPage }) => {
+
     // console.log(eachPage, currentPage);
     let count = await usersModel.countDocuments(); //总条数
     let totalPage = Math.ceil((count / eachPage)); //总页数
@@ -25,4 +26,9 @@ module.exports.getUserByPage = async ({ eachPage, currentPage }) => {
         users,//数据
     };
     return pageData;
+}
+//用户登录
+module.exports.loging = async (parm) => {
+    console.log(parm);
+    return await usersModel.find(parm);
 }
