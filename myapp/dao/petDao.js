@@ -29,7 +29,6 @@ module.exports.getPetsByPage=async function({eachPage,currentPage,type,text}){
         total,//总条数
         pets//学生数据
     };
-    console.log(pageDate);
     return pageDate;
 
 }
