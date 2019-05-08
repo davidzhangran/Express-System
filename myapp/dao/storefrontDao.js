@@ -20,21 +20,17 @@ module.exports.getStorefrontByPage = async (parm) => {
         currentPage,
         eachPage,
     } = parm;
-    console.log(parm);
-    
     let storefrontInfo = await storefrontModel
         .find()
         .skip((currentPage - 1) * eachPage) //跳过多少个
         .limit(eachPage - 0) //查询多少个
-
     let count = await storefrontModel.find();//总条数
-    let totalPage = Math.ceil(count.length / currentPage); //总页数
-    
+    let totalPage = Math.ceil(count.length / eachPage); //总页数
     return {
-        count:count.length,
-        totalPage,
-        currentPage,
-        eachPage,
+        count: count.length,
+        totalPage: totalPage,
+        currentPage: currentPage - 0,
+        eachPage: eachPage - 0,
         storefrontInfo
     }
 

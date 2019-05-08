@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const storefrontSchema = new mongoose.Schema({
     name: String,    // 名称
     licensenumber: String, // 营业执照号码
-    license: String,  // 营业执照图片
+    license: Array,  // 营业执照图片
     site: String,//营业地址
     location: String,//定位,经纬度
     person: String,//法人
@@ -31,6 +31,7 @@ const storefrontSchema = new mongoose.Schema({
         default: "1"//默认申请中，2表示可用，0不可用
     },
 })
+
 
 mongoose.model('storefrontModel', storefrontSchema, "storefront");
 
