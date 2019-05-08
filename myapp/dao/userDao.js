@@ -50,3 +50,7 @@ module.exports.loging = async (parm) => {
 module.exports.upDataUser = async ({_id, state}) => {
     return await usersModel.updateOne({_id},{state});
 }
+//删除用户
+module.exports.deleteUser = async (_id) => {
+    return await usersModel.deleteOne({_id})
+}
