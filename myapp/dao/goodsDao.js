@@ -3,7 +3,6 @@ let { goodsModel } = require("./models/goodsModel.js");
 
 module.exports.addCommodity = async function (classes) {
     await goodsModel.create(classes);
-
 }
 module.exports.getcommoditysByPage = async function ({ eachPage, currentPage }) {
     let count = await goodsModel.countDocuments();//求总条数

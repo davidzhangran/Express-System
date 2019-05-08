@@ -4,7 +4,8 @@ const { uploadFile } = require("../util/upload.js");
 
 const {
   addStorefront,
-  getStorefrontByPage
+  getStorefrontByPage,
+  addStaff
 } = require('../service/storefrontSer');
 
 //申请门店
@@ -25,4 +26,10 @@ router.post('/addLicense2', async function (req, res, next) {
 router.get('/getStorefrontByPage', async function (req, res, next) {
   res.send(await getStorefrontByPage(req.query));
 });
+
+// 增加员工
+router.post('/addStaff', async function (req, res, next) {
+  res.send(await addStaff(req.body));
+
+})
 module.exports = router;
