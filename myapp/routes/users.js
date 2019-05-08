@@ -3,7 +3,8 @@ var router = express.Router();
 
 let { addUser,
     getUserByPage,
-    loging
+    loging,
+    upDataUser
 } = require('../service/userService');
 
 //获取用户
@@ -22,5 +23,8 @@ router.post('/loging', async function (req, res, next) {
     res.send(await loging(req.body));
 });
 
-
+//修改用户
+router.post('/upDataUser', async function (req, res, next) {
+    res.send(await upDataUser(req.body));
+});
 module.exports = router;

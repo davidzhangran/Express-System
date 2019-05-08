@@ -1,7 +1,8 @@
 const {
     addUser,
     getUserByPage,
-    loging
+    loging,
+    upDataUser
 } = require('../dao/userDao');
 
 //申请用户
@@ -16,3 +17,7 @@ module.exports.getUserByPage = async function (pram) {
 module.exports.loging = async function (pram) {
     return await loging(pram);
 }
+module.exports.upDataUser = async function (pram) {
+    return await upDataUser(pram);
+}
+

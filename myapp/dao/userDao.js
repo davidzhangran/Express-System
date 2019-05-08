@@ -1,6 +1,9 @@
 const {
     usersModel,
 } = require("./models/usersModel");
+const {
+    petModel,
+} = require("./models/petModel");
 
 //新增用户
 module.exports.addUser = async (parm) => {
@@ -29,6 +32,21 @@ module.exports.getUserByPage = async ({ eachPage, currentPage }) => {
 }
 //用户登录
 module.exports.loging = async (parm) => {
-    console.log(parm);
+    
+    // console.log(parm);
+    // const data = await usersModel.find({ _id: "5cd24a9abdd86d6cb86dae95" })
+    // const pet = await petModel.find({ _id: "5cd265a05fba2c5898ed5cbb" })
+    // console.log(data[0].petId);
+    // const petId = data[0].petId.map(item => item + "")
+    // console.log(petId);
+    // petId.push("5cd2664939b7b34f0cc9017b")
+    // console.log(petId);
+    // const newData = await usersModel.updateOne({ _id: "5cd24a9abdd86d6cb86dae95" }, { petId})
+    // console.log(newData);
+
     return await usersModel.find(parm);
+}
+//修改用户
+module.exports.upDataUser = async ({_id, state}) => {
+    return await usersModel.updateOne({_id},{state});
 }
