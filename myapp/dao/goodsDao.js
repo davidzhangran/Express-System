@@ -22,6 +22,5 @@ module.exports.getcommoditysByPage = async function ({ eachPage, currentPage }) 
         count,//总条数
         commoditys//电影数据
     };
-    console.log(commoditys)
     return pageDate;
 }
