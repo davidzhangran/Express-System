@@ -32,7 +32,8 @@ module.exports.addCommodity = async function ({ userId,
         supplier, //供应商
         feature, //特色说明
         price,
-        images
+        images,
+        userId
     });
     const user = await usersModel.find({ _id: userId });
     let goodsId = user[0].goodsId.map(item => item + "");
@@ -40,11 +41,13 @@ module.exports.addCommodity = async function ({ userId,
     await usersModel.updateOne({ _id: userId }, { goodsId });
     return await usersModel.find({ _id: userId }).populate("goodsId")
 }
-module.exports.getcommoditysByPage = async function ({ eachPage, currentPage, type, text }) {
+module.exports.getcommoditysByPage = async function ({ eachPage, currentPage, type, text, userId }) {
     let count = await goodsModel.countDocuments();//求总条数
-    let i = await goodsModel.find({ [type]: text });
+    let i = await goodsModel.find({ [type]: text, userId }, (err, data) => {
+        return data
+    });
     let commoditys = await goodsModel
-        .find({ [type]: text })
+        .find({ [type]: text, userId })
         //关联
         //跳过的条数
         .skip((currentPage - 1) * eachPage)
