@@ -42,6 +42,7 @@ module.exports.addCommodity = async function ({ userId,
     return await usersModel.find({ _id: userId }).populate("goodsId")
 }
 module.exports.getcommoditysByPage = async function ({ eachPage, currentPage, type, text, userId }) {
+    console.log(userId)
     let count = await goodsModel.countDocuments();//求总条数
     let i = await goodsModel.find({ [type]: text, userId }, (err, data) => {
         return data
