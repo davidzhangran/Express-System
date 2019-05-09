@@ -1,11 +1,11 @@
 const {serveModel}=require("../dao/models/serveModel")
 const {usersModel}=require("./models/usersModel");
 module.exports.addPet=async function({name,category,schedule,specification,service,consuming,grade,price,userId}){
-    let result = await serveModel.find({name,category,schedule,specification,service,consuming,grade,price})
+    let result = await serveModel.find({name,category,schedule,specification,service,consuming,grade,price,userId})
     if (result.length != 0) {
         return false;
     }
-    const {_id}=await serveModel.create({name,category,schedule,specification,service,consuming,grade,price}); //增加
+    const {_id}=await serveModel.create({name,category,schedule,specification,service,consuming,grade,price,userId}); //增加
     const data=await usersModel.find({_id:userId});
     const serveId = data[0].serveId.map(item => item +"")
     serveId.push(_id+"")
@@ -13,13 +13,13 @@ module.exports.addPet=async function({name,category,schedule,specification,servi
     const user = await usersModel.find({_id:userId}).populate("serveId")
     return user;
 }
-module.exports.getPetsByPage=async function({eachPage,currentPage,type,text}){
+module.exports.getPetsByPage=async function({eachPage,currentPage,type,text,userId}){
     //求总条数,也就是需要的学生人数
     let total=await serveModel.countDocuments();//求总条数
     let maxPage=Math.ceil(total/eachPage);//总页数
     let serves=await serveModel
     .find({
-        [type]:text
+        [type]:text,userId
     })
     //关联
     // .populate("classId")

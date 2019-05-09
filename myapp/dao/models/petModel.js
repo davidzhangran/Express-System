@@ -10,6 +10,10 @@ const petSchema = new mongoose.Schema({
     age: String,//年龄
     gender: String,//性别
     describe: String,//描述
+    userId:{//用户id
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'usersModel'
+    },
 })
 
 mongoose.model('petModel', petSchema, "pet");
