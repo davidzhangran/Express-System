@@ -3,6 +3,7 @@
 const {
     addStorefront,
     getStorefrontByPage,
+    addStaff,
     updateStorefront
 } = require('../dao/storefrontDao');
 
@@ -14,7 +15,12 @@ module.exports.addStorefront = async function (pram) {
 module.exports.getStorefrontByPage = async function (pram) {
     return await getStorefrontByPage(pram);
 }
-//修改门店
+
+
+module.exports.addStaff = async function (pram) {
+        return await addStaff(pram);
+}
+//门店
 module.exports.updateStorefront = async function (pram) {
     let data = await updateStorefront(pram);
     if (data.ok > 0) {

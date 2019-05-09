@@ -42,6 +42,14 @@ module.exports.getStorefrontByPage = async (parm) => {
 
 }
 
+module.exports.addStaff = async ({ _id, staff }) => {
+    let [data] = await storefrontModel.find({ _id });
+    staff.date = staff.date.slice(0, 10)
+    data.clerk.push(staff);
+    await storefrontModel.updateMany({ _id }, { clerk: data.clerk });
+    let [info] = await storefrontModel.find({ _id })
+    return info;
+}
 //修改门店
 module.exports.updateStorefront = async (parm) => {
     console.log(parm);
