@@ -9,7 +9,11 @@ const serveSchema = new mongoose.Schema({
     service: String,//服务规格
     consuming: String,//耗时
     grade: String,//服务员等级
-    price: Number//价格
+    price: Number,//价格
+    userId:{//用户id
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'usersModel'
+    },
 })
 
 mongoose.model('serveModel', serveSchema, "serve");
