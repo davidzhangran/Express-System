@@ -7,9 +7,7 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 //宠物新增
-router.post('/addServePet', async function (req, res, next) {
-  console.log(1);
-  
+router.post('/addServePet', async function (req, res, next) { 
   res.send(await addPet(req.body));
 });
 //文件上传
