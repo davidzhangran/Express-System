@@ -1,8 +1,14 @@
-const { addPetMaster } = require("../dao/petMasterDao");
+const { addPetMaster,getPetMasterByPage } = require("../dao/petMasterDao");
 
-module.exports.addPetMaster = async function (event) {
-    const data = await addPetMaster(event);
+// 新增宠主
+module.exports.addPetMaster = async function (pram) {
+    const data = await addPetMaster(pram);
     console.log(data);
-
     return data;
 }
+
+// 获取宠主数据
+module.exports.getPetMasterByPage = async function (pram) {
+    return await getPetMasterByPage(pram);
+}
+
