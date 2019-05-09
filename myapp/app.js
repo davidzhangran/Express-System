@@ -14,6 +14,7 @@ var petRouter = require('./routes/pet');//宠物
 var petMemberRouter = require('./routes/petMember');//宠主
 var serveRouter = require('./routes/serve');//服务
 var storefrontRouter = require('./routes/storefront');//门店
+var storesystemfrontRouter = require('./routes/storesystemfront');//门店管理
 var usersRouter = require('./routes/users');//用户
 
 require('./dao/database'); //引入数据库的东西
@@ -47,6 +48,7 @@ app.use('/pet', petRouter);//宠物
 app.use('/petMember', petMemberRouter);//宠主
 app.use('/serve', serveRouter);//服务
 app.use('/storefront', storefrontRouter);//门店
+app.use('/storesystemfrontRouter', storesystemfrontRouter);//门店管理
 app.use('/users', usersRouter);//用户
 
 

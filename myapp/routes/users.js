@@ -20,6 +20,8 @@ router.post('/addUser', async function (req, res, next) {
 
 //用户登录
 router.post('/loging', async function (req, res, next) {
+    console.log(1);
+    
     res.send(await loging(req.body));
 });
 
