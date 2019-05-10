@@ -2,7 +2,7 @@
 const mongoose = require('mongoose');
 
 const ordersSchema = new mongoose.Schema({
-    petMemberId: {//用户id
+    petMemberId: {//宠主id
         type: mongoose.Schema.Types.ObjectId,
         ref: 'petMemberModel'
     },

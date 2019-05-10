@@ -14,6 +14,9 @@ const storefrontSchema = new mongoose.Schema({
     vip: String,//VIP等级
     commission: String,//佣金比例
     clerk: Array,//店员属性
+    userId: {//用户id
+        type: mongoose.Schema.Types.ObjectId
+    },
     goodsId: [{//商品id
         type: mongoose.Schema.Types.ObjectId,
         ref: 'goodsModel'
