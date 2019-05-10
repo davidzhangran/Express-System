@@ -9,11 +9,15 @@ const {
   updateStorefront,
   addGoods,
   addServe,
-  addPet
+  addPet,
+  remove,
+  removeStaff
 } = require('../service/storefrontSer');
 
 //申请门店
 router.post('/addStorefront', async function (req, res, next) {
+  console.log(req.body);
+  
   res.send(await addStorefront(req.body));
 });
 
@@ -55,6 +59,16 @@ router.get('/addServe', async function (req, res, next) {
 router.get('/addPet', async function (req, res, next) {
   
   res.send(await addPet(req.query));
+});
+
+
+// 删除
+router.get('/remove', async function (req, res, next) {
+  res.send(await remove(req.query));
+});
+// 删除
+router.get('/removeStaff', async function (req, res, next) {
+  res.send(await removeStaff(req.query));
 });
 
 module.exports = router;

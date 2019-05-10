@@ -7,7 +7,9 @@ const {
     updateStorefront,
     addGoods,
     addServe,
-    addPet
+    addPet,
+    remove,
+    removeStaff
 } = require('../dao/storefrontDao');
 
 //申请门店
@@ -41,4 +43,12 @@ module.exports.addServe = async function (pram) {
 }
 module.exports.addPet = async function (pram) {
     return await addPet(pram);
+}
+
+module.exports.remove = async function (pram) {
+    return await remove(pram);
+}
+
+module.exports.removeStaff = async function (pram) {
+    return await removeStaff(pram);
 }

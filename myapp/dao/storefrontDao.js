@@ -8,7 +8,7 @@ const {
 
 module.exports.addStorefront = async (parm) => {
     const { userId } = parm;
-
+    
     // let result = await storefrontModel.find(parm)
     // if (result.length != 0) {
     //     return false;
@@ -72,6 +72,9 @@ module.exports.addStaff = async ({ _id, staff }) => {
     data.clerk.push(staff);
     await storefrontModel.updateMany({ _id }, { clerk: data.clerk });
     let [info] = await storefrontModel.find({ _id })
+        .populate("goodsId")
+        .populate("serveId")
+        .populate("petId")
     return info;
 }
 //修改门店
@@ -98,11 +101,11 @@ module.exports.addGoods = async ({ _id, goodsId }) => {
 module.exports.addServe = async ({ _id, serveId }) => {
     let [data] = await storefrontModel.find({ _id });
     data.serveId.push(serveId)
-    // 更新数据
+    // // 更新数据
     await storefrontModel.updateMany({ _id }, data);
     return await storefrontModel.find({ _id })
-        .populate("serveId")
         .populate("goodsId")
+        .populate("serveId")
         .populate("petId")
 }
 
@@ -110,6 +113,34 @@ module.exports.addServe = async ({ _id, serveId }) => {
 module.exports.addPet = async ({ _id, petId }) => {
     let [data] = await storefrontModel.find({ _id });
     data.petId.push(petId)
+    // 更新数据
+    await storefrontModel.updateMany({ _id }, data);
+    return await storefrontModel.find({ _id })
+        .populate("serveId")
+        .populate("goodsId")
+        .populate("petId")
+}
+// 移除
+module.exports.remove = async ({ _id, typeId, type }) => {
+    let [data] = await storefrontModel.find({ _id });//查找到当前门店的信息
+    // 通过filter删除商品
+    let newData = data[type].filter(item => item != typeId);
+    data[type] = newData;
+    // // 更新数据
+    await storefrontModel.updateMany({ _id }, data);
+    return await storefrontModel.find({ _id })
+        .populate("serveId")
+        .populate("goodsId")
+        .populate("petId")
+}
+
+// 移除员工（通过电话号码）
+module.exports.removeStaff = async ({ _id, phone }) => {
+    let [data] = await storefrontModel.find({ _id });//查找到当前门店的信息
+    // 通过filter删除
+    
+    let newData = data.clerk.filter(item => item.phone != phone);
+    data.clerk = newData;
     // 更新数据
     await storefrontModel.updateMany({ _id }, data);
     return await storefrontModel.find({ _id })
