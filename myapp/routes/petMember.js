@@ -3,7 +3,7 @@ var router = express.Router();
 const { uploadFile } = require("../util/upload.js");//上传图片的文件
 
 const {
-    addPetMaster, getPetMasterByPage, updatePetMaster
+    addPetMaster, getPetMasterByPage, updatePetMaster,removePetMaster
 } = require('../service/petMarstSer');
 
 //添加新宠主
@@ -28,6 +28,11 @@ router.get('/getPetMasterByPage', async function (req, res, next) {
 // 修改宠主数据
 router.post('/updatePetMaster', async function (req, res, next) {
     res.send(await updatePetMaster(req.body));
+});
+
+// 删除宠主
+router.post('/removePetMaster', async function (req, res, next) {
+    res.send(await removePetMaster(req.body));
 });
 
 
