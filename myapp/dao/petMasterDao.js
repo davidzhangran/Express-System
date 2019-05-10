@@ -29,4 +29,10 @@ module.exports.getPetMasterByPage = async ({ eachPage, currentPage }) => {
     return pageData;
 }
 
+//修改宠主
+module.exports.updatePetMasterById=async function(updateMaster){
+    let {_id}=updateMaster;
+   return await petModel.update({_id},updateMaster);
+}
+
 
