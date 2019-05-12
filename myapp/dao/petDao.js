@@ -16,7 +16,10 @@ module.exports.addPet=async function({name,category,color,price,images,age,gende
 }
 module.exports.getPetsByPage=async function({eachPage,currentPage,type,text,userId}){
     //求总条数,也就是需要的学生人数
-    let total=await petModel.countDocuments();//求总条数
+    let total=await petModel.find({
+        [type]:text,userId
+    })
+    // .countDocuments();//求总条数
     let maxPage=Math.ceil(total/eachPage);//总页数
     //多条件查询
     let pets=await petModel
@@ -33,7 +36,7 @@ module.exports.getPetsByPage=async function({eachPage,currentPage,type,text,user
         currentPage:currentPage - 0,//当前页码
         eachPage: eachPage - 0,//每页显示的条数
         maxPage,//总页数
-        total,//总条数
+        total:total.length,//总条数
         pets//学生数据
     };
     return pageDate;

@@ -45,3 +45,21 @@ module.exports.removeOrders = async function (commodityId) {
     return await ordersModel.remove(commodityId);
 
 }
+//修改
+module.exports.upDataOrders = async function ({ _id, petMemberId,
+    goodsId,
+    storefrontId,
+    serveId,
+    petId,
+    price }) {
+    return await ordersModel.update({ _id }, {
+        petMemberId,
+        goodsId,
+        storefrontId,
+        serveId,
+        petId,
+        price
+    }, (err, data) => {
+        return data
+    });
+}

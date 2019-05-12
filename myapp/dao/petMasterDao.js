@@ -4,7 +4,7 @@ const {
 
 // 新增宠主数据
 module.exports.addPetMaster = async (parm) => {
-    console.log(parm);
+    // console.log(parm);
     return await petMemberModel.create(parm);
 }
 
@@ -27,6 +27,19 @@ module.exports.getPetMasterByPage = async ({ eachPage, currentPage }) => {
     };
     // console.log(pageData)
     return pageData;
+}
+
+//修改宠主
+module.exports.updatePetMaster = async function (updateMaster) {
+    let { _id } = updateMaster;
+    console.log(updateMaster);
+    return await petMemberModel.update({ _id }, updateMaster);
+}
+
+//删除宠物
+module.exports.removePetMaster = async function (id) {
+    console.log(id);
+    return await petMemberModel.deleteMany({ _id: id._id });
 }
 
 
