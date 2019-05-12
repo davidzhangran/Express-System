@@ -6,11 +6,18 @@ const {
   addStorefront,
   getStorefrontByPage,
   addStaff,
-  updateStorefront
+  updateStorefront,
+  addGoods,
+  addServe,
+  addPet,
+  remove,
+  removeStaff
 } = require('../service/storefrontSer');
 
 //申请门店
 router.post('/addStorefront', async function (req, res, next) {
+  console.log(req.body);
+  
   res.send(await addStorefront(req.body));
 });
 
@@ -37,4 +44,31 @@ router.post('/addStaff', async function (req, res, next) {
 router.post('/updateStorefront', async function (req, res, next) {
   res.send(await updateStorefront(req.body));
 });
+
+// 添加商品
+router.get('/addGoods', async function (req, res, next) {
+  res.send(await addGoods(req.query));
+});
+
+// 添加服务
+router.get('/addServe', async function (req, res, next) {
+  res.send(await addServe(req.query));
+});
+
+// 添加宠物
+router.get('/addPet', async function (req, res, next) {
+  
+  res.send(await addPet(req.query));
+});
+
+
+// 删除
+router.get('/remove', async function (req, res, next) {
+  res.send(await remove(req.query));
+});
+// 删除
+router.get('/removeStaff', async function (req, res, next) {
+  res.send(await removeStaff(req.query));
+});
+
 module.exports = router;

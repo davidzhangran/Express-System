@@ -4,7 +4,12 @@ const {
     addStorefront,
     getStorefrontByPage,
     addStaff,
-    updateStorefront
+    updateStorefront,
+    addGoods,
+    addServe,
+    addPet,
+    remove,
+    removeStaff
 } = require('../dao/storefrontDao');
 
 //申请门店
@@ -18,7 +23,7 @@ module.exports.getStorefrontByPage = async function (pram) {
 
 
 module.exports.addStaff = async function (pram) {
-        return await addStaff(pram);
+    return await addStaff(pram);
 }
 //门店
 module.exports.updateStorefront = async function (pram) {
@@ -27,4 +32,23 @@ module.exports.updateStorefront = async function (pram) {
         return true;
     }
     return false;
+}
+
+
+module.exports.addGoods = async function (pram) {
+    return await addGoods(pram);
+}
+module.exports.addServe = async function (pram) {
+    return await addServe(pram);
+}
+module.exports.addPet = async function (pram) {
+    return await addPet(pram);
+}
+
+module.exports.remove = async function (pram) {
+    return await remove(pram);
+}
+
+module.exports.removeStaff = async function (pram) {
+    return await removeStaff(pram);
 }

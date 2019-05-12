@@ -1,8 +1,36 @@
-const { addPetMaster } = require("../dao/petMasterDao");
+const { addPetMaster, getPetMasterByPage,updatePetMaster ,removePetMaster} = require("../dao/petMasterDao");
 
-module.exports.addPetMaster = async function (event) {
-    const data = await addPetMaster(event);
-    console.log(data);
-
+// 新增宠主
+module.exports.addPetMaster = async function (pram) {
+    const data = await addPetMaster(pram);
+<<<<<<< HEAD
+=======
+    // console.log(data);
+>>>>>>> 21edb06fe6b7d93dcb37e25f78b3790f94eaa7b3
     return data;
 }
+
+// 获取宠主数据
+module.exports.getPetMasterByPage = async function (pram) {
+    return await getPetMasterByPage(pram);
+}
+
+// 修改宠主数据
+module.exports.updatePetMaster = async function (pram) {
+    let data = await updatePetMaster(pram);
+    if (data.ok > 0) {
+        return true;
+    }
+    return false;
+}
+
+// 删除宠主
+module.exports.removePetMaster=async function(id){
+    let result=await removePetMaster(id);
+       if(result){
+           return true;
+       }else{
+            return false;
+       }
+}
+
