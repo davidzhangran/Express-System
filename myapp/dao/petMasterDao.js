@@ -25,7 +25,7 @@ module.exports.getPetMasterByPage = async ({ eachPage, currentPage }) => {
         count, //总条数
         petMasterUsers,//数据
     };
-    console.log(pageData)
+    // console.log(pageData)
     return pageData;
 }
 
