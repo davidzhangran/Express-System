@@ -1,16 +1,13 @@
 let { ordersModel } = require("./models/ordersModel.js");
 
 module.exports.addOrders = async function (orders) {
-    console.log(orders)
-    let data = await ordersModel.create(orders);
-    console.log(data)
+    
+    return await ordersModel.create(orders);
+    
 }
 
-module.exports.getOrdersByPage = async function ({ eachPage, currentPage, type, text, userId }) {
+module.exports.getOrdersByPage = async function ({ eachPage, currentPage, type, text }) {
     let count = await ordersModel.countDocuments();//求总条数
-    let i = await ordersModel.find({ [type]: text, userId }, (err, data) => {
-        return data
-    });
     let orders = await ordersModel
         .find()
         .populate("goodsId")
@@ -31,13 +28,13 @@ module.exports.getOrdersByPage = async function ({ eachPage, currentPage, type, 
     // }]
 
 
-    let totalPage = Math.ceil(count - 0 / eachPage);//总页数
+    let totalPage = Math.ceil((count-0) / eachPage);//总页数
     let pageDate = {
         currentPage: currentPage - 0,//当前页码
         eachPage: eachPage - 0,//每页显示的条数
-        totalPage,//总页数
-        count,//总条数
-        orders//电影数据
+        totalPage:totalPage-0,//总页数
+        count:count-0,//总条数
+        orders//订单数据
     };
     return pageDate;
 }
