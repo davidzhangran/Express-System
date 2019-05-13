@@ -28,6 +28,9 @@ module.exports.getStorefrontByPage = async (parm) => {
         })
         .skip((currentPage - 1) * eachPage) //跳过多少个
         .limit(eachPage - 0) //查询多少个
+        .populate("goodsId")
+        .populate("serveId")
+        .populate("petId")
     let count = await storefrontModel.find({
         [value]: inputText,
         state
