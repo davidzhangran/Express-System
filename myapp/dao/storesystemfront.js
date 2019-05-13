@@ -43,6 +43,7 @@ module.exports.getStorefrontByPage = async (parm) => {
         eachPage: eachPage - 0,
         storefrontInfo
     }
+    console.log(1);
 
 }
 
