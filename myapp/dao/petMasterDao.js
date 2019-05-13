@@ -37,9 +37,8 @@ module.exports.updatePetMaster = async function (updateMaster) {
 }
 
 //删除宠物
-module.exports.removePetMaster = async function (id) {
-    console.log(id);
-    return await petMemberModel.deleteMany({ _id: id._id });
+module.exports.removePetMaster = async function ({_id}) {
+    return await petMemberModel.deleteOne({_id});
 }
 
 

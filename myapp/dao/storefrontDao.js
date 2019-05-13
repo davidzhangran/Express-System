@@ -86,6 +86,8 @@ module.exports.updateStorefront = async (parm) => {
 
 // 添加商品
 module.exports.addGoods = async ({ _id, goodsId }) => {
+    console.log(_id);
+    
     let [data] = await storefrontModel.find({ _id });
     data.goodsId.push(goodsId)
     // 更新数据

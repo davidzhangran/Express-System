@@ -16,11 +16,18 @@ var serveRouter = require('./routes/serve');//服务
 var storefrontRouter = require('./routes/storefront');//门店
 var storesystemfrontRouter = require('./routes/storesystemfront');//门店管理
 var usersRouter = require('./routes/users');//用户
+var recognitionRouter = require('./routes/recognition');//人脸
 
 require('./dao/database'); //引入数据库的东西
 
 
 var app = express();
+
+//文件超过限制处理
+var bodyParser = require('body-parser');
+app.use(bodyParser.json({ limit: '50mb' }));
+app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -50,6 +57,7 @@ app.use('/serve', serveRouter);//服务
 app.use('/storefront', storefrontRouter);//门店
 app.use('/storesystemfrontRouter', storesystemfrontRouter);//门店管理
 app.use('/users', usersRouter);//用户
+app.use('/recognition', recognitionRouter);//用户
 
 
 

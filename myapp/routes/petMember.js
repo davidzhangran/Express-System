@@ -27,6 +27,8 @@ router.get('/getPetMasterByPage', async function (req, res, next) {
 
 // 修改宠主数据
 router.post('/updatePetMaster', async function (req, res, next) {
+    console.log(req.body);
+    
     res.send(await updatePetMaster(req.body));
 });
 
