@@ -3,10 +3,7 @@ const { addPetMaster, getPetMasterByPage,updatePetMaster ,removePetMaster} = req
 // 新增宠主
 module.exports.addPetMaster = async function (pram) {
     const data = await addPetMaster(pram);
-<<<<<<< HEAD
-=======
     // console.log(data);
->>>>>>> 21edb06fe6b7d93dcb37e25f78b3790f94eaa7b3
     return data;
 }
 
