@@ -14,7 +14,6 @@ module.exports.addStorefront = async (parm) => {
 }
 //同过分页获取
 module.exports.getStorefrontByPage = async (parm) => {
-    console.log(parm);
     let {
         currentPage,
         eachPage,
