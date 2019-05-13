@@ -8,9 +8,10 @@ module.exports.addOrders = async function (orders) {
 
 module.exports.getOrdersByPage = async function ({ eachPage, currentPage, type, text, userId }) {
     let count = await ordersModel.countDocuments();//求总条数
-    let i = await ordersModel.find({ [type]: text, userId }, (err, data) => {
-        return data
-    });
+    console.log(321);
+    console.log(userId);
+    console.log(123);
+    
     let orders = await ordersModel
         .find()
         .populate("goodsId")
@@ -23,6 +24,7 @@ module.exports.getOrdersByPage = async function ({ eachPage, currentPage, type, 
         .skip((currentPage - 1) * eachPage)
         //指定从跳过之后的数量，有多少条数
         .limit(eachPage - 0)
+console.log(orders);
 
     // [{
     //     petMemberId:{
