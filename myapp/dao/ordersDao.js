@@ -20,6 +20,7 @@ module.exports.getOrdersByPage = async function ({ eachPage, currentPage, type, 
         .skip((currentPage - 1) * eachPage)
         //指定从跳过之后的数量，有多少条数
         .limit(eachPage - 0)
+console.log(orders);
 
     // [{
     //     petMemberId:{
