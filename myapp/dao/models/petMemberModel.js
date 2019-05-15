@@ -2,7 +2,8 @@
 const mongoose = require('mongoose');
 
 const petMemberSchema = new mongoose.Schema({
-    phone: String,    // 电话号码
+    password:String,//密码
+    phone: String, // 电话号码
     username: String, // 昵称
     name: String,  // 真实姓名
     card: String,//会员卡
