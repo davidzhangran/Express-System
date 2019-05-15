@@ -17,6 +17,7 @@ var storefrontRouter = require('./routes/storefront');//门店
 var storesystemfrontRouter = require('./routes/storesystemfront');//门店管理
 var usersRouter = require('./routes/users');//用户
 var recognitionRouter = require('./routes/recognition');//人脸
+var shoppingCartRouter = require('./routes/shoppingCart');//购物车
 
 require('./dao/database'); //引入数据库的东西
 
@@ -58,7 +59,7 @@ app.use('/storefront', storefrontRouter);//门店
 app.use('/storesystemfrontRouter', storesystemfrontRouter);//门店管理
 app.use('/users', usersRouter);//用户
 app.use('/recognition', recognitionRouter);//用户
-
+app.use('/shoppingCart', shoppingCartRouter);//购物车
 
 
 
