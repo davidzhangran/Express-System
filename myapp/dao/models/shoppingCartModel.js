@@ -17,6 +17,7 @@ const shoppingCartSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'petModel'
     }],
+    count:Number,//数量
     price: Number,//价格
 })
 
