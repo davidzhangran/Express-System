@@ -22,7 +22,6 @@ const goodsSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'usersModel'
     }
-
 })
 
 mongoose.model('goodsModel', goodsSchema, "goods");
