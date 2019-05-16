@@ -37,8 +37,26 @@ module.exports.updatePetMaster = async function (updateMaster) {
 }
 
 //删除宠物
-module.exports.removePetMaster = async function ({_id}) {
-    return await petMemberModel.deleteOne({_id});
+module.exports.removePetMaster = async function ({ _id }) {
+    return await petMemberModel.deleteOne({ _id });
+}
+
+//通过用户唯一标识注册
+module.exports.getID = async function ({ body, data }) {
+    const info = JSON.parse(body).openid;
+    const ISInfo = await petMemberModel.find({ card: info });
+    if (ISInfo.length <= 0) {
+        const { userInfo } = data;   // 解构用户信息
+        const newUserInfo = JSON.parse(userInfo);
+        const user = {
+            card: info,
+            username: newUserInfo.nickName,
+            banner: newUserInfo.avatarUrl
+        }; // 将用户信息已对象的方式存放到user中
+        return await petMemberModel.create(user);
+    }else{
+        return ISInfo
+    }
 }
 
 

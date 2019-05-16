@@ -1,4 +1,4 @@
-const { addPetMaster, getPetMasterByPage,updatePetMaster ,removePetMaster} = require("../dao/petMasterDao");
+const { addPetMaster, getPetMasterByPage, updatePetMaster, removePetMaster ,getID} = require("../dao/petMasterDao");
 
 // 新增宠主
 module.exports.addPetMaster = async function (pram) {
@@ -22,12 +22,19 @@ module.exports.updatePetMaster = async function (pram) {
 }
 
 // 删除宠主
-module.exports.removePetMaster=async function(id){
-    let result=await removePetMaster(id);
-       if(result){
-           return true;
-       }else{
-            return false;
-       }
+module.exports.removePetMaster = async function (id) {
+    let result = await removePetMaster(id);
+    if (result) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
+
+//获取用户唯一标识，进行注册
+module.exports.getID = async function (userData) {
+    let result = await getID(userData);
+    console.log(result);
+    return result;
+}
