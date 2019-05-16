@@ -19,6 +19,7 @@ const shoppingCartSchema = new mongoose.Schema({
     }],
     count:Number,//数量
     price: Number,//价格
+    selected:false
 })
 
 mongoose.model('shoppingCartModel', shoppingCartSchema, "shoppingCart");

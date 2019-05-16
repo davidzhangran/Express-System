@@ -1,7 +1,6 @@
 let { shoppingCartModel } = require("./models/shoppingCartModel.js");
 
 module.exports.addShoppingCart = async function (orders) {
-
     return await shoppingCartModel.create(orders);
 
 }
@@ -12,8 +11,6 @@ module.exports.getShoppingCartByPage = async function ({ petMemberId }) {
         .populate("goodsId")
         .populate("serveId")
         .populate("petId")
-
-
     return shoppingCart;
 }
 
